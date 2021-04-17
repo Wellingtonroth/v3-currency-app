@@ -29,6 +29,7 @@
             href="#" 
             class="btn btn-primary btn-sm tooltip tooltip-left"
             data-tooltip="Seguir"
+            @click="$emit('listen', key)"
           >
             <i class="icon icon-plus"></i>
           </a>
@@ -51,5 +52,6 @@ export default {
       required: true
     }
   },
+  emits: ['listen']
 };
 </script>

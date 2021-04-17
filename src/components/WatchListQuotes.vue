@@ -8,25 +8,41 @@
 </template>
 
 <script>
-import { ref } from 'vue'
+import { ref, reactive, toRefs, onMounted } from 'vue'
 import ListQuotes from './ListQuotes'
+import api from "@/services/api"
 
 export default {
   components: {
     ListQuotes
   },
   props: {
-    lintenQuotes: {
+    listenQuotes: {
       type: Array,
       required: true
     }
   },
-  setup() {
-    const interval = ref(null);
+  setup(props) {
+    // const interval = ref(null);
     const quotes = ref({});
     const nextUpdateTime = ref(30);
 
-    return { quotes, nextUpdateTime };
+    const methods = reactive({
+      async refresh() {
+        const { data } = await api.listen(props.listenQuotes);
+        quotes.value = data;
+      }
+    })
+
+    onMounted(() => {
+      methods.refresh()
+    })
+
+    return {
+      ...toRefs(methods),
+      quotes,
+      nextUpdateTime
+    };
   }
 }
 </script>

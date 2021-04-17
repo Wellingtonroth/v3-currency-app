@@ -17,7 +17,8 @@
         <ListQuotes 
         :quotes="quotes" 
         :listen-quotes="listenQuotes"
-        
+        @listen="onListen"
+        @unlisten="onUnListen"
       />
       </div>
     </div>
@@ -43,11 +44,23 @@ export default {
     })
 
     onMounted(async () => {
-      const response = await api.all()
-      data.quotes = response.data
+      const response = await api.all();
+      data.quotes = response.data;
     })
 
-    return { ...toRefs(data) }
+    function onListen(code) {
+      data.listenQuotes.push(code)
+    }
+
+    function onUnListen(code) {
+      data.listenQuotes = data.listenQuotes.filter(key => key !== code);
+    }
+
+    return { 
+      ...toRefs(data),
+      onListen,
+      onUnListen
+    }
   }
 }
 </script>

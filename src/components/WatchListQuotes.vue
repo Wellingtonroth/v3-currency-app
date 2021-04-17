@@ -22,8 +22,9 @@ export default {
     }
   },
   setup() {
+    const interval = ref(null);
     const quotes = ref({});
-    const nextUpdateTime = ref(30)
+    const nextUpdateTime = ref(30);
 
     return { quotes, nextUpdateTime };
   }

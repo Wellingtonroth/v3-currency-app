@@ -1,5 +1,5 @@
 <template>
-  <ListQuotes :quotes="quotes" />
+  <ListQuotes :quotes="quotes" :listen-quotes="listenQuotes" />
   <div class="mt-2 text-right">
     <cite class="text-small">
       Atualizará novamente em <b>{{ nextUpdateTime }} segundos</b>
@@ -14,6 +14,12 @@ import ListQuotes from './ListQuotes'
 export default {
   components: {
     ListQuotes
+  },
+  props: {
+    lintenQuotes: {
+      type: Array,
+      required: true
+    }
   },
   setup() {
     const quotes = ref({});

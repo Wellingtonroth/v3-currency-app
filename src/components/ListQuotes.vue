@@ -45,6 +45,10 @@ export default {
     quotes: {
       type: Object,
       required: true
+    },
+    lintenQuotes: {
+      type: Array,
+      required: true
     }
   },
 };

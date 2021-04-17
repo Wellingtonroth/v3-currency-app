@@ -5,7 +5,7 @@
         <div class="h4">Acompanhando</div>
       </div>
       <div class="card-body">
-        <WatchListQuotes />
+        <WatchListQuotes :listen-quotes="listenQuotes" />
       </div>
     </div>
 
@@ -14,7 +14,7 @@
         <div class="h4">Todas as moedas</div>
       </div>
       <div class="card-body">
-        <ListQuotes :quotes="quotes" />
+        <ListQuotes :quotes="quotes" :listen-quotes="listenQuotes" />
       </div>
     </div>
   </div>
@@ -35,6 +35,7 @@ export default {
   setup() {
     const data = reactive({
       quotes: {},
+      listenQuotes: [],
     })
 
     onMounted(async () => {

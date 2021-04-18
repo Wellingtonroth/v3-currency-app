@@ -5,7 +5,7 @@
         <div class="h4">Acompanhando</div>
       </div>
       <div class="card-body">
-        <WatchListQuotes :listen-quotes="listenQuotes" />
+        <WatchListQuotes :listen-quotes="listenQuotes" @unlist="onUnlisten" />
       </div>
     </div>
 
